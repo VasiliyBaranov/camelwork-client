@@ -6,14 +6,17 @@
       </router-link>
     </div>
     <div class="main-links">
-      <router-link :to="{ name: 'home' }" tag="div" class="nav-item">
+      <router-link :to="{ name: 'listWorkBook' }" tag="div" class="nav-item">
         Справочник «Место работы»
       </router-link>
+      <router-link :to="{ name: 'listPhoneBook' }" tag="div" class="nav-item">
+        Справочник «Телефонная книга»
+      </router-link>
       <router-link :to="{ name: 'phoneBookEdit' }" tag="div" class="nav-item">
-        Редактирование телефонной книги
+        Редактирование «Телефонная книга»
       </router-link>
       <router-link :to="{ name: 'workBookCreate' }" tag="div" class="nav-item">
-        Добавить место работы
+        Добавить «Место работы»
       </router-link>
     </div>
   </div>

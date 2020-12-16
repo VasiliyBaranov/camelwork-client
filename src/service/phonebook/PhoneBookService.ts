@@ -37,9 +37,9 @@ export default class PhoneBookService implements PhoneBookServiceI {
         return JSON.parse(httpResponse.data)
     }
 
-    public async allPhoneBooks(): Promise<any> {
+    public async allPhoneBooks(): Promise<Array<PhoneBookDto>> {
         const httpResponse = await call.get("/book")
-        return JSON.parse(httpResponse.data);
+        return httpResponse.data;
     }
 
     public async updatePhoneBook(id: number, data: PhoneBookDto): Promise<PhoneBookDto> {

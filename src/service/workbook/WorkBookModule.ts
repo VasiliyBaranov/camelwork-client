@@ -20,7 +20,6 @@ class WorkBookModule extends VuexModule {
   }
   @Mutation
   private setAddWorkBook(data: WorkBookDto): void {
-    debugger
     this.workBookDto = data
   }
 
@@ -52,7 +51,6 @@ class WorkBookModule extends VuexModule {
   @Action
   protected async deleteWorkBook(id: number): Promise<void> {
     this._workBookService.deleteWorkBook(id).then(value => {
-      debugger
       this.context.commit('setClearWorkBook');
     })
 

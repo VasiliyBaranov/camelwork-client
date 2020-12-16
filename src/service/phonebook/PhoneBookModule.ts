@@ -8,24 +8,25 @@ class PhoneBookModule extends VuexModule {
   @inject()
   private _phoneBookService!: PhoneBookServiceI
 
-  public list: Array<PhoneBookDto> = []
+  public phoneBookList: Array<PhoneBookDto> = []
   public phoneBookDto: PhoneBookDto = {
     id: 0,
     firstName: '',
     lastName: '',
     birthDate: '',
     email: '',
-    mobilePhone: ''
+    mobilePhone: '',
+    workPhone: '',
+    work: ''
   }
 
   @Mutation
   public setPhoneBooks(data: Array<PhoneBookDto>): void {
-    this.list = data
+    this.phoneBookList = data
   }
 
   @Mutation
   public setAddPhoneBook(data: PhoneBookDto): void {
-    debugger
     this.phoneBookDto = data
   }
 
@@ -38,15 +39,19 @@ class PhoneBookModule extends VuexModule {
       lastName: '',
       birthDate: '',
       email: '',
-      mobilePhone: ''
+      mobilePhone: '',
+      workPhone: '',
+      work: ''
     }
   }
 
 
-
   @Action
-  protected async listPhoneBook(): Promise<void> {
-    this.context.commit('setPhoneBooks', await this._phoneBookService.allPhoneBooks());
+  protected async listPhoneBook(): Promise<Array<PhoneBookDto>> {
+    return this._phoneBookService.allPhoneBooks().then(value => {
+      this.context.commit('setPhoneBooks', value);
+      return value;
+    })
   }
   @Action
   protected async addPhoneBook(data: PhoneBookDto): Promise<void> {
@@ -55,7 +60,6 @@ class PhoneBookModule extends VuexModule {
   @Action
   protected async getPhoneBook(): Promise<PhoneBookDto> {
     return this._phoneBookService.getPhoneBook(0).then(value => {
-      debugger
       this.context.commit('setAddPhoneBook', value);
       return value;
     })
@@ -64,7 +68,6 @@ class PhoneBookModule extends VuexModule {
   @Action
   protected async deletePhoneBook(): Promise<void> {
     this._phoneBookService.deletePhoneBook(0).then(value => {
-      debugger
       this.context.commit('setClearPhoneBook');
     })
 
@@ -73,7 +76,6 @@ class PhoneBookModule extends VuexModule {
   @Action
   protected async sendData(): Promise<void> {
     this._phoneBookService.sendData().then(value => {
-      debugger
       this.context.commit('setClearPhoneBook');
     })
 

@@ -1,42 +1,39 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home.vue'
+import Home from '@/views/ListWorkBook.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
     {
         path: '/',
-        name: 'home',
+        name: 'listWorkBook',
         component: Home
     },
     {
-        path: '/modify',
-        name: 'modify',
-        component: () =>
-            import(/* webpackChunkName: "ModifyBlog" */ '@/views/ModifyBlog.vue')
+        path: '/phone-book',
+        name: 'listPhoneBook',
+        component: () => import('@/views/ListPhoneBook.vue')
     },
     {
         path: '/phone-book-edit',
         name: 'phoneBookEdit',
-        component: () =>
-            import(/* webpackChunkName: "ModifyBlog" */'@/views/PhoneBookEdit.vue')
+        component: () => import('@/views/PhoneBookEdit.vue')
     },
     {
         path: '/work-book-create',
         name: 'workBookCreate',
-        component: () =>
-            import(/* webpackChunkName: "ModifyBlog" */'@/views/WorkBookCreate.vue')
+        component: () => import('@/views/WorkBookCreate.vue')
     },
     {
         path: '/about',
         name: 'about',
-        component: () => import(/* webpackChunkName: "about" */ '@/views/WorkBookCreate.vue')
+        component: () => import('@/views/WorkBookCreate.vue')
     },
     {
         path: '*',
         name: 'notFound',
-        component: () => import(/* webpackChunkName: "about" */ '@/views/404.vue')
+        component: () => import('@/views/404.vue')
     }
 ]
 

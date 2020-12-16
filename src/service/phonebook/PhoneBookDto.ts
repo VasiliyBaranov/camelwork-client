@@ -4,7 +4,9 @@ export default interface PhoneBookDto {
     firstName:      string
     lastName:       string
     mobilePhone:      string
+    workPhone:      string
     email:          string
+    work:          string
     birthDate:      string
 }
 
@@ -13,6 +15,8 @@ export const phoneBookDtoDefault =  {
     firstName:      "",
     lastName:       "",
     mobilePhone:    "",
+    workPhone:      "",
+    work:      "",
     email:          "",
     birthDate:      "",
 }

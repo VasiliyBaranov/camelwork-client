@@ -1,24 +1,16 @@
 <template>
     <div class="home">
-        <h1 class="page-title">Camel App</h1>
+        <h1 class="page-title">Справочник «Телефонная книга»</h1>
         <div class="card-container">
-            <router-link
-                    v-for="phoneBook in list"
-                    :key="phoneBook.id"
-                    :to="'/article/' + phoneBook.id"
-            >
-                <el-card :body-style="{ padding: '0px' }" class="article">
+            <div v-for="workBook in list" :key="workBook.id">
+                <el-card :body-style="{ padding: '0px' }"  class="article">
                     <div class="title">
-                        Имя: {{ phoneBook.firstName }}<br>
-                        <span style="font-size: 12px">{{ phoneBook.id }}</span>
-                    </div>
-
-                    <div class="title">
-                        Фамилия: {{ phoneBook.lastName }}<br>
-                        <span style="font-size: 12px">{{ phoneBook.id }}</span>
+                        {{ workBook.lastName }} {{ workBook.firstName }} <br />
+                        <span style="font-size: 16px">Адрес работы: {{ workBook.addressWork }}</span><br />
+                        <span style="font-size: 16px">Место работы: {{ workBook.placeWork }}</span><br />
                     </div>
                 </el-card>
-            </router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -27,6 +19,7 @@
     import {Component, Vue} from 'vue-property-decorator'
     import 'reflect-metadata'
     import {namespace} from "vuex-class";
+    import WorkBookDto from "@/service/workbook/WorkBookDto";
 
     const workBookModule = namespace('WorkBookModule')
     @Component
@@ -37,7 +30,7 @@
         }
 
         @workBookModule.State
-        public list!: Array<object>
+        public list!: Array<WorkBookDto>
 
         @workBookModule.Action
         public listWorkBook!: () => void

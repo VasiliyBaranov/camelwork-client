@@ -2,7 +2,7 @@ import PhoneBookDto from "@/service/phonebook/PhoneBookDto";
 
 
 export default interface PhoneBookServiceI {
-    allPhoneBooks(): Promise<PhoneBookDto>
+    allPhoneBooks(): Promise<Array<PhoneBookDto>>
     sendData(): Promise<void>
     addPhoneBook (data: PhoneBookDto): Promise<PhoneBookDto>
     updatePhoneBook (id: number, data: PhoneBookDto): Promise<PhoneBookDto>

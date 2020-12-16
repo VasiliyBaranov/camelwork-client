@@ -10,7 +10,6 @@ import InfoMsg from "@/api/infoMsg";
 export default class WorkBookService implements WorkBookServiceI {
 
     public async deleteWorkBook(id: number): Promise<WorkBookDto> {
-        debugger
         const httpResponse = await call.delete<WorkBookDto>("/work-book/" + id)
         return httpResponse.data
     }
@@ -29,9 +28,7 @@ export default class WorkBookService implements WorkBookServiceI {
     }
 
     public async allWorkBooks(): Promise<any> {
-        debugger
         const httpResponse = await call.get<WorkBookDto>("/work-book")
-        debugger
         return httpResponse.data;
     }
 
